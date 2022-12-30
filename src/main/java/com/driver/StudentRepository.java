@@ -70,5 +70,6 @@ public class StudentRepository {
     public void deleteAllteachers(){
         teacherMap = teacherMap;
         teacherstudentMap = teacherstudentMap;
+        studentMap = studentMap;
     }
 }
