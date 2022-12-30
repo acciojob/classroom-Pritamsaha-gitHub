@@ -64,12 +64,17 @@ public class StudentRepository {
         return studentlist;
     }
     public void deleteTeacherbyName(String teacher){
+        List<String>studentList=new ArrayList<>();
+        studentList=teacherstudentMap.get(teacher);
+        for(int i=0;i<studentList.size();i++){
+            studentMap.remove(studentList.get(i));
+        }
         teacherstudentMap.remove(teacher);
         teacherMap.remove(teacher);
     }
     public void deleteAllteachers(){
         teacherMap = teacherMap;
         teacherstudentMap = teacherstudentMap;
-        studentMap = studentMap;
+      //  studentMap = studentMap;
     }
 }
