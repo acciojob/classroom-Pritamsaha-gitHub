@@ -15,9 +15,9 @@ public class StudentRepository {
     private HashMap<String, List<String>> teacherstudentMap;//key is teacher
 
     public StudentRepository() {
-        this.studentMap = studentMap;
-        this.teacherMap = teacherMap;
-        this.teacherstudentMap = teacherstudentMap;
+        this.studentMap = new HashMap<>();
+        this.teacherMap = new HashMap<>();
+        this.teacherstudentMap = new HashMap<>();
     }
     public void addstudent(Student student){
         String key=student.getName();
