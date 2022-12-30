@@ -14,7 +14,7 @@ public class StudentRepository {
     private HashMap<String,Teacher> teacherMap;
     private HashMap<String, List<String>> teacherstudentMap;//key is teacher
 
-    public StudentRepository(HashMap<String, Student> studentMap, HashMap<String, Teacher> teacherMap, HashMap<String, List<String>> teacherstudentMap) {
+    public StudentRepository() {
         this.studentMap = studentMap;
         this.teacherMap = teacherMap;
         this.teacherstudentMap = teacherstudentMap;
@@ -39,15 +39,17 @@ public class StudentRepository {
     }
     //get student by name
     public Student getStudentbyName(String name){
-        if(studentMap.containsKey(name)) return studentMap.get(name);
-        return null;
+        //if(studentMap.containsKey(name))
+            return studentMap.get(name);
+        //return null;
     }
     //get teacher by name
     public Teacher getteacherByName(String name){
-        if (teacherMap.containsKey(name)) return teacherMap.get(name);
-        return null;
+        //if (teacherMap.containsKey(name))
+            return teacherMap.get(name);
+        //return null;
     }
-    //get student by teacher namr
+    //get student by teacher name
     public List<String> getStudentsByteacherName(String teacher){
         List<String>datafromDB=new ArrayList<>();
         if (teacherstudentMap.containsKey(teacher)){
@@ -67,8 +69,13 @@ public class StudentRepository {
         List<String>studentList=new ArrayList<>();
         if(teacherstudentMap.containsKey(teacher)){
             studentList=teacherstudentMap.get(teacher);
-            for(int i=0;i<studentList.size();i++){
-                studentMap.remove(studentList.get(i));
+//            for(int i=0;i<studentList.size();i++){
+//                studentMap.remove(studentList.get(i));
+//            }
+            for(String st: studentList){
+                if (studentMap.containsKey(st)){
+                    studentMap.remove(st);
+                }
             }
         }
         teacherstudentMap.remove(teacher);
@@ -77,8 +84,8 @@ public class StudentRepository {
         }
     }
     public void deleteAllteachers(){
-        teacherMap = teacherMap;
-        teacherstudentMap = teacherstudentMap;
+        teacherMap = new HashMap<>();
+        //teacherstudentMap = teacherstudentMap;
       //  studentMap = studentMap;
     }
 }
