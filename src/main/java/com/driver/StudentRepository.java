@@ -65,12 +65,16 @@ public class StudentRepository {
     }
     public void deleteTeacherbyName(String teacher){
         List<String>studentList=new ArrayList<>();
-        studentList=teacherstudentMap.get(teacher);
-        for(int i=0;i<studentList.size();i++){
-            studentMap.remove(studentList.get(i));
+        if(teacherstudentMap.containsKey(teacher)){
+            studentList=teacherstudentMap.get(teacher);
+            for(int i=0;i<studentList.size();i++){
+                studentMap.remove(studentList.get(i));
+            }
         }
         teacherstudentMap.remove(teacher);
-        teacherMap.remove(teacher);
+        if (teacherstudentMap.containsKey(teacher)){
+            teacherMap.remove(teacher);
+        }
     }
     public void deleteAllteachers(){
         teacherMap = teacherMap;
